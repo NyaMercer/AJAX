@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+<form action="index.php">
+    <label for="">
+        账号<input type="text" name="urse">
+        密码<input type="text" name="pasw">
+        <input type="submit">
+    </label>
+</form>
+</body>
+</html>
+<script>
+    // let btn=document.querySelector(`input[type=submit]`);
+    // btn.onclick=function (e) {
+    //     e.preventDefault()
+    //     let inpt=document.querySelectorAll(`input[type=text]`);
+    //     let str=``
+    //     ajax=window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject(`Microsoft.XMLHttp`)
+    //     inpt.forEach(val => {
+    //         str+=val.name+`=`+val.value+`&`
+    //     })
+    //     str=str.slice(0,-1)
+    //     console.log(str)
+    //     ajax.open('get','index.php?'+str,true)
+    //     ajax.send()
+    //     ajax.onreadystatechange=function () {
+    //         if (ajax.readyState===4){
+    //             if (ajax.status===200){
+    //                 console.log(ajax.responseText)
+    //             }
+    //         }
+    //     }
+    // }
+    $(':submit').click(function (e) {
+        e.preventDefault()
+        $.ajax({
+            url:'index.php',
+            type:'get',
+            data:$('form').serialize(),
+            asynch:true,
+            dataType:'text',
+            success:function (mes) {
+                console.log(mes)
+            }
+        })
+    })
+</script>
